@@ -1,0 +1,22 @@
+{
+  "name": "exercise11",
+  "version": "0.0.1",
+  "description": "exercise",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FE-star/exercise11.git"
+  },
+  "author": "Daniel Yang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FE-star/exercise11/issues"
+  },
+  "homepage": "https://github.com/FE-star/exercise11#readme",
+  "devDependencies": {
+    "webpack": "^3.6.0"
+  }
+}
