@@ -8,6 +8,26 @@ var TARGET = process.env.npm_lifecycle_event
 console.log(TARGET);
 var APP_PATH = path.join(__dirname, '/src')
 
+if(TARGET === 'build'){
+     var plugins = [
+       new webpack.optimize.UglifyJsPlugin(),
+       new ExtractTextPlugin("main.css")
+    ]
+    var rules = [{
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: "css-loader"
+            })
+    }]
+}else{
+    var plugins = []
+    var rules = [{
+            test: /\.css$/,
+            use: "css-loader"
+    }]
+}
+
 const config = {
     entry: APP_PATH + '/index.js',
     output: {
@@ -15,22 +35,9 @@ const config = {
         filename: 'main.js',
     },
     module: {
-        rules: [{
-            test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-                fallback: "style-loader",
-                use: "css-loader"
-            })
-        }]
+        rules: rules
     },
-   /* plugins: [
-       TARGET == 'build' ? new webpack.optimize.UglifyJsPlugin():'',
-       TARGET == 'build' ? new ExtractTextPlugin("main.css"):'',
-    ]*/
-    plugins: [
-       new webpack.optimize.UglifyJsPlugin(),
-       new ExtractTextPlugin("main.css")
-    ]
+    plugins:plugins
 }
  
 
