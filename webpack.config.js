@@ -23,9 +23,13 @@ const config = {
             })
         }]
     },
-    plugins: [
+   /* plugins: [
        TARGET == 'build' ? new webpack.optimize.UglifyJsPlugin():'',
        TARGET == 'build' ? new ExtractTextPlugin("main.css"):'',
+    ]*/
+    plugins: [
+       new webpack.optimize.UglifyJsPlugin(),
+       new ExtractTextPlugin("main.css")
     ]
 }
  
